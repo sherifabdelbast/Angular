@@ -1,13 +1,16 @@
 <ul>
   @for (place of places(); track place.id) {
-    <li class="place-item">
-      <button (click)="onSelectPlace(place)">
-        <img
-          [src]="'http://localhost:3000/' + place.image.src"
-          [alt]="place.image.alt"
-        />
-        <h3>{{ place.title }}</h3>
-      </button>
-    </li>
+  <li class="place-item">
+    <button (click)="onSelectPlace(place)">
+      <img
+        [src]="
+          'https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/' +
+          place.image.src
+        "
+        [alt]="place.image.alt"
+      />
+      <h3>{{ place.title }}</h3>
+    </button>
+  </li>
   }
 </ul>
