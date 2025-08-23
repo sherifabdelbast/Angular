@@ -49,9 +49,12 @@ export class PlacesService {
     this.userPlaces.set([...prevPlaces, place]);
 
     return this.httpClient
-      .put<Place>('https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places', {
-        placeId: place.id,
-      })
+      .put<Place>(
+        'https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places',
+        {
+          placeId: place.id,
+        }
+      )
       .pipe(
         catchError((error) => {
           this.userPlaces.set(prevPlaces);
@@ -78,7 +81,9 @@ export class PlacesService {
     }
 
     return this.httpClient
-      .delete<Place>(`https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/${place.id}`)
+      .delete<Place>(
+        `https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places/${place.id}`
+      )
       .pipe(
         catchError((error) => {
           // Restore previous state on error
