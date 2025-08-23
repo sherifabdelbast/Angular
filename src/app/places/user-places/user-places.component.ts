@@ -4,6 +4,7 @@ import { PlacesContainerComponent } from '../places-container/places-container.c
 import { PlacesComponent } from '../places.component';
 
 import { PlacesService } from '../places.service';
+import { Place } from '../place.model';
 @Component({
   selector: 'app-user-places',
   standalone: true,
@@ -27,6 +28,14 @@ export class UserPlacesComponent implements OnInit {
         this.isFetching.set(false);
       },
     });
+
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+  }
+
+  onRemoveSelected(place: Place) {
+    const subscription = this.placesService.removeUserPlace(place).subscribe();
 
     this.destroyRef.onDestroy(() => {
       subscription.unsubscribe();

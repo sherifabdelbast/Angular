@@ -5,7 +5,7 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './places-container.component.html',
-  styleUrl: './places-container.component.css'
+  styleUrl: './places-container.component.css',
 })
 export class PlacesContainerComponent {
   title = input.required<string>();

@@ -37,10 +37,12 @@ export class AvailablePlacesComponent implements OnInit {
     });
   }
   onSelectPlace(selectedPlace: Place) {
-    const subscription = this.placesService.addPlaceToUserPlaces(selectedPlace);
+    const subscription = this.placesService
+      .addPlaceToUserPlaces(selectedPlace)
+      .subscribe();
 
-    // this.destroyRef.onDestroy(() => {
-    //   subscription.unsubscribe();
-    // });
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
   }
 }
