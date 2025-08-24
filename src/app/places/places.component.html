@@ -2,8 +2,10 @@
   @for (place of places(); track place.id) {
   <li class="place-item">
     <button (click)="onSelectPlace(place)">
-      <img
-        [src]="
+      <picture>
+        <source [srcset]="https://httprequestsbackend-3sv1hma7.b4a.run/ + place.image.webp" type="image/webp" />
+        <img [src]="https://httprequestsbackend-3sv1hma7.b4a.run/ + place.image.src" [alt]="place.image.alt" loading="lazy" />
+      </picture>
           'https://httprequestsbackend-3sv1hma7.b4a.run/' + place.image.src
         "
         [alt]="place.image.alt"
