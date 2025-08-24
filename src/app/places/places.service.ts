@@ -15,14 +15,14 @@ export class PlacesService {
 
   loadAvailablePlaces() {
     return this.fetchPlaces(
-      'https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/places',
+      'https://httprequestsbackend-3sv1hma7.b4a.run/places',
       'Something went wrong Fetching available places,Please Try Again Later'
     );
   }
 
   loadUserPlaces() {
     return this.fetchPlaces(
-      'https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places',
+      'https://httprequestsbackend-3sv1hma7.b4a.run/user-places',
       'Something went wrong,Please try again later.Fetching your Favourite places'
     ).pipe(
       tap({
@@ -49,12 +49,9 @@ export class PlacesService {
     this.userPlaces.set([...prevPlaces, place]);
 
     return this.httpClient
-      .put<Place>(
-        'https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places',
-        {
-          placeId: place.id,
-        }
-      )
+      .put<Place>('https://httprequestsbackend-3sv1hma7.b4a.run/user-places', {
+        placeId: place.id,
+      })
       .pipe(
         catchError((error) => {
           this.userPlaces.set(prevPlaces);
@@ -82,7 +79,7 @@ export class PlacesService {
 
     return this.httpClient
       .delete<Place>(
-        `https://8b1ce6b4-4b8f-4e52-aa20-30e89abdcf70-00-30fy5zpqqt6f6.janeway.replit.dev/user-places/${place.id}`
+        `https://httprequestsbackend-3sv1hma7.b4a.run/user-places/${place.id}`
       )
       .pipe(
         catchError((error) => {
